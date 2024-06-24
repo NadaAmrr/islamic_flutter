@@ -34,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         /// App Bar
         appBar: AppBar(
+          elevation: 0,
           title: Text(
             "Islami",
             style: Theme.of(context).textTheme.titleLarge,

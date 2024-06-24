@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islamic/core/utils/app_image.dart';
+import 'package:islamic/models/sura_model.dart';
+import 'package:islamic/screens/suraDetails/sura_details_screen.dart';
+import 'package:islamic/screens/tabs/widgets/sura_widget.dart';
 
 class QuranTab extends StatelessWidget {
   ScrollController _scrollController = ScrollController();
@@ -40,18 +43,7 @@ class QuranTab extends StatelessWidget {
                   Expanded(
                     child: Column(
                       children: List.generate(suraNames.length, (index) {
-                        return InkWell(
-                          onTap: () {
-
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              suraNames[index],
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                          ),
-                        );
+                        return SuraWidget(index: index, name: suraNames[index],);
                       }),
                     ),
                   ),
@@ -61,6 +53,7 @@ class QuranTab extends StatelessWidget {
                       children: List.generate(versesNumber.length, (index) {
                         return InkWell(
                           onTap: () {
+                            Navigator.of(context).pushNamed(SuraDetailsScreen.routeName);
 
                           },
                           child: Padding(
@@ -84,18 +77,4 @@ class QuranTab extends StatelessWidget {
   }
 }
 
-class SuraItem extends StatelessWidget {
-  String name;
-  SuraItem({
-    super.key,
-    required this.name,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      name,
-      style: Theme.of(context).textTheme.titleLarge,
-    );
-  }
-}

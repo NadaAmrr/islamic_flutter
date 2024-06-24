@@ -1,6 +1,7 @@
 class AppImages {
   static const String _base = "assets/images/";
 
+  static const String filePath = "assets/files/";
   static const String defaultBg = "${_base}default_bg.png";
   static const String quranLogo = "${_base}quran_logo.png";
   static const String hadethLogo = "${_base}hadeth_logo.png";
