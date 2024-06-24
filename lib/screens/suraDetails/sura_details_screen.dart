@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islamic/core/utils/app_colors.dart';
 import 'package:islamic/core/utils/app_image.dart';
 import 'package:islamic/models/sura_model.dart';
 
@@ -17,7 +18,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)!.settings.arguments as SuraModel;
-    loadFile(args.index);
+    if (data.isEmpty) {
+      loadFile(args.index);
+    }
     return Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -43,14 +46,42 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                   child: CircularProgressIndicator(
                   color: Theme.of(context).primaryColor,
                 ))
-              : ListView.builder(
-                  itemBuilder: (context, index) {
-                    return Text(
-                      data[index],
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(),
-                    );
-                  },
-                  itemCount: data.length,
+              : Container(
+                  padding: EdgeInsets.symmetric(
+                      vertical: MediaQuery.of(context).size.height * 0.01,
+                      horizontal: MediaQuery.of(context).size.width * 0.04),
+                  margin: EdgeInsets.symmetric(
+                      vertical: MediaQuery.of(context).size.height * 0.06,
+                      horizontal: MediaQuery.of(context).size.width * 0.04),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: AppColors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        args.name,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const Divider(),
+                      Expanded(
+                        child: ListView.builder(
+                          itemBuilder: (context, index) {
+                            return Text(
+                              '${data[index]} (${index + 1})',
+                              textAlign: TextAlign.center,
+                              textDirection: TextDirection.rtl,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(),
+                            );
+                          },
+                          itemCount: data.length,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
         ));
   }
@@ -59,7 +90,12 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   void loadFile(int index) async {
     String file = await rootBundle.loadString('assets/files/${index + 1}.txt');
     List<String> lines = file.split('\n');
+    // for (var i = 0; i < lines.length; ++i) {
+    //   var o = lines[i];
+    //
+    // }
     data = lines;
+
     setState(() {});
   }
 }
