@@ -23,26 +23,49 @@ class AppTheme {
     textTheme: _baseTextTheme,
   );
 
+  static const DividerThemeData _divider = DividerThemeData(
+    thickness: 3,
+  );
+
   /// Light theme
   static ThemeData lightTheme = _baseTheme.copyWith(
-    primaryColor: AppColors.main,
-    textTheme: _baseTextTheme.copyWith(
-      titleLarge:
-          _baseTextTheme.titleLarge?.copyWith(color: AppColors.textMain),
-    ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: AppColors.main, selectedItemColor: AppColors.iconMain),
+      primaryColor: AppColors.main,
+
+      /// text theme
+      textTheme: _baseTextTheme.copyWith(
+        titleLarge:
+            _baseTextTheme.titleLarge?.copyWith(color: AppColors.textMain),
+      ),
+
+      /// bottom nav bar
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: AppColors.main,
+          selectedItemColor: AppColors.iconMain),
+
+      /// divider
+      dividerTheme: _divider.copyWith(
+        color: AppColors.main
+      ),
+
   );
 
   /// Dark theme
   static ThemeData darkTheme = _baseTheme.copyWith(
-    primaryColor: AppColors.mainDark,
-    textTheme: _baseTextTheme.copyWith(
-      titleLarge:
-          _baseTextTheme.titleLarge?.copyWith(color: AppColors.textDarkMain),
-    ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: AppColors.mainDark,
-        selectedItemColor: AppColors.iconMainDark),
-  );
+      primaryColor: AppColors.mainDark,
+
+      /// text theme
+      textTheme: _baseTextTheme.copyWith(
+        titleLarge:
+            _baseTextTheme.titleLarge?.copyWith(color: AppColors.textDarkMain),
+      ),
+
+      /// bottom nav bar
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: AppColors.mainDark,
+          selectedItemColor: AppColors.iconMainDark),
+
+      /// divider
+      dividerTheme: _divider.copyWith(
+          color: AppColors.mainDark
+      ),);
 }
