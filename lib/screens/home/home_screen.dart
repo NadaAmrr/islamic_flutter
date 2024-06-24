@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:islamic/core/utils/app_colors.dart';
 import 'package:islamic/core/utils/app_image.dart';
+import 'package:islamic/screens/tabs/hadeth_tab.dart';
+import 'package:islamic/screens/tabs/quran_tab.dart';
+import 'package:islamic/screens/tabs/radio_tab.dart';
+import 'package:islamic/screens/tabs/sebha_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = "home";
@@ -64,7 +68,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     label: "Quran"),
               ]),
         ),
+        body: tabs[selectedIndex],
       ),
     );
   }
+  List<Widget> tabs = [
+    RadioTab(),
+    SebhaTab(),
+    HadethTab(),
+    QuranTab(),
+  ];
 }
