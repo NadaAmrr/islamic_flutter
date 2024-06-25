@@ -28,7 +28,6 @@ class QuranTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         Center(child: Image.asset(AppImages.quranLogo)),
         const Divider(),
         Text("Quran",style: Theme.of(context).textTheme.titleLarge,),
@@ -53,14 +52,18 @@ class QuranTab extends StatelessWidget {
                       children: List.generate(versesNumber.length, (index) {
                         return InkWell(
                           onTap: () {
-                            Navigator.of(context).pushNamed(SuraDetailsScreen.routeName);
-
+                            Navigator.of(context).pushNamed(SuraDetailsScreen.routeName,  arguments: SuraModel(name: suraNames[index], index: index));
                           },
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              versesNumber[index].toString(),
-                              style: Theme.of(context).textTheme.titleLarge,
+                            padding: const EdgeInsets.all(0.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  versesNumber[index].toString(),
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
+                                const Divider()
+                              ],
                             ),
                           ),
                         );

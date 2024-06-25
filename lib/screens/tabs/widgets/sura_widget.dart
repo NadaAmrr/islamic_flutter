@@ -19,10 +19,15 @@ class SuraWidget extends StatelessWidget {
             arguments: SuraModel(name: name, index: index));
       },
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          name,
-          style: Theme.of(context).textTheme.titleLarge,
+        padding: const EdgeInsets.all(0.0),
+        child: Column(
+          children: [
+            Text(
+              name,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const Divider(),
+          ],
         ),
       ),
     );
