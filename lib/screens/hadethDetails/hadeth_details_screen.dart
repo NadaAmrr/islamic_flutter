@@ -4,10 +4,10 @@ import 'package:islamic/core/utils/app_colors.dart';
 import 'package:islamic/core/utils/app_image.dart';
 import 'package:islamic/models/hadeth_model.dart';
 import 'package:islamic/models/sura_model.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HadthDetailsScreen extends StatefulWidget {
   static const routeName = "hadeth";
-  HadthDetailsScreen({super.key});
+  const HadthDetailsScreen({super.key});
 
   @override
   State<HadthDetailsScreen> createState() => _HadthDetailsScreenState();
@@ -33,7 +33,7 @@ class _HadthDetailsScreenState extends State<HadthDetailsScreen> {
           /// App Bar
           appBar: AppBar(
             title: Text(
-              'Islami',
+              AppLocalizations.of(context)!.appName,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             iconTheme: IconThemeData(color: Colors.black),

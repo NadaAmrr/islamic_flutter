@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:islamic/core/utils/app_image.dart';
 import 'package:islamic/models/hadeth_model.dart';
 import 'package:islamic/screens/hadethDetails/hadeth_details_screen.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HadethTab extends StatefulWidget {
-  HadethTab({super.key});
+  const HadethTab({super.key});
 
   @override
   State<HadethTab> createState() => _HadethTabState();
@@ -24,7 +24,7 @@ class _HadethTabState extends State<HadethTab> {
         Center(child: Image.asset(AppImages.hadethLogo)),
         const Divider(),
         Text(
-          "Hadeth",
+          AppLocalizations.of(context)!.ahadeth,
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const Divider(),

@@ -3,7 +3,7 @@ import 'package:islamic/core/utils/app_image.dart';
 import 'package:islamic/models/sura_model.dart';
 import 'package:islamic/screens/suraDetails/sura_details_screen.dart';
 import 'package:islamic/screens/tabs/widgets/sura_widget.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class QuranTab extends StatelessWidget {
   ScrollController _scrollController = ScrollController();
   List<String> suraNames = [
@@ -30,7 +30,14 @@ class QuranTab extends StatelessWidget {
       children: [
         Center(child: Image.asset(AppImages.quranLogo)),
         const Divider(),
-        Text("Quran",style: Theme.of(context).textTheme.titleLarge,),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(AppLocalizations.of(context)!.numAyat,style: Theme.of(context).textTheme.titleLarge,),
+            Text(AppLocalizations.of(context)!.suraName,style: Theme.of(context).textTheme.titleLarge,),
+          ],
+        ),
         const Divider(),
         Expanded(
           child: SingleChildScrollView(

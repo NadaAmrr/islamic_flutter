@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:islamic/core/utils/app_colors.dart';
 import 'package:islamic/core/utils/app_image.dart';
 import 'package:islamic/models/sura_model.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SuraDetailsScreen extends StatefulWidget {
   static const routeName = "suraDetails";
   SuraDetailsScreen({super.key});
@@ -34,7 +34,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           /// App Bar
           appBar: AppBar(
             title: Text(
-              args.name,
+              AppLocalizations.of(context)!.appName,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             iconTheme: IconThemeData(color: Colors.black),
@@ -60,7 +60,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                   child: Column(
                     children: [
                       Text(
-                        args.name,
+                        '${AppLocalizations.of(context)!.sura} ${args.name}',
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const Divider(),
