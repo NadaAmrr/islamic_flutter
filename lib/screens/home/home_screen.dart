@@ -6,6 +6,7 @@ import 'package:islamic/screens/tabs/quran_tab.dart';
 import 'package:islamic/screens/tabs/radio_tab.dart';
 import 'package:islamic/screens/tabs/sebha_tab.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islamic/screens/tabs/settings_tab.dart';
 class HomeScreen extends StatefulWidget {
   static String routeName = "home";
 
@@ -67,6 +68,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage(AppImages.iconQuran)),
                     label: AppLocalizations.of(context)!.quran),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.settings),
+                    label: AppLocalizations.of(context)!.setting),
               ]),
         ),
         body: tabs[selectedIndex],
@@ -78,5 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
     SebhaTab(),
     HadethTab(),
     QuranTab(),
+    SettingsTab()
   ];
 }

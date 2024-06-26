@@ -7,5 +7,12 @@
   "ahadeth": "Hadiths",
   "tasbeh": "Praise",
   "radio": "Radio",
-  "quran": "Quran"
+  "quran": "Quran",
+  "setting": "settings",
+  "lang": "Language",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark",
+  "en": "English",
+  "ar": "Arabic"
 }
