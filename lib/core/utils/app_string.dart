@@ -1,5 +1,8 @@
 
 class AppString {
+  /// Api
+  static const String apiRadio = 'https://mp3quran.net/api/v3/radios?';
+  ///
   static const String _imgBase = "assets/images/";
   static const String fileBase = "assets/files/";
   static const String imgDefaultBg = "${_imgBase}default_bg.png";
