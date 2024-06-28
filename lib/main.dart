@@ -7,7 +7,6 @@ void main() {
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AppConfigProvider()),
-        // ChangeNotifierProvider(create: (context) => AssetsProvider(AppConfigProvider())),
       ],
-      child: MyApp()));
+      child: const MyApp()));
 }
