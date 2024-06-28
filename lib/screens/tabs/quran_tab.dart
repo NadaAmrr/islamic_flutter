@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:islamic/core/utils/app_assets.dart';
 import 'package:islamic/models/sura_model.dart';
-import 'package:islamic/provider/app_confing_provider.dart';
 import 'package:islamic/screens/suraDetails/sura_details_screen.dart';
 import 'package:islamic/screens/tabs/widgets/sura_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 class QuranTab extends StatelessWidget {
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   List<String> suraNames = [
     "الفاتحه","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود"
     ,"يوسف","الرعد","إبراهيم","الحجر","النحل","الإسراء","الكهف","مريم","طه","الأنبياء","الحج","المؤمنون"
@@ -28,7 +26,6 @@ class QuranTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<AppConfigProvider>(context);
     return Column(
       children: [
         Center(child: Image.asset(AppAssets.quranLogo)),

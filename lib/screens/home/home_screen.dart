@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islamic/core/utils/app_colors.dart';
 import 'package:islamic/core/utils/app_assets.dart';
 import 'package:islamic/provider/app_confing_provider.dart';
 import 'package:islamic/screens/home/home_screen_povider.dart';
@@ -16,7 +15,6 @@ class HomeScreen extends StatelessWidget {
 
    HomeScreen({super.key});
 
-  // int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     var providerConfig = Provider.of<AppConfigProvider>(context);
@@ -29,8 +27,8 @@ class HomeScreen extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: providerConfig.isLightMode()
-                    ? AssetImage(AppAssets.imgDefaultBg)
-                    : AssetImage(AppAssets.imgDarkBg),
+                    ? const AssetImage(AppAssets.imgDefaultBg)
+                    : const AssetImage(AppAssets.imgDarkBg),
                 fit: BoxFit.cover,
               ),
             ),

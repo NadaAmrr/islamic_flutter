@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:islamic/core/utils/app_colors.dart';
 import 'package:islamic/core/utils/app_assets.dart';
 import 'package:islamic/models/sura_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

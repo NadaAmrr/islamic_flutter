@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islamic/core/theme/app_theme.dart';
 import 'package:islamic/core/utils/app_colors.dart';
 import 'package:islamic/provider/app_confing_provider.dart';
 import 'package:provider/provider.dart';

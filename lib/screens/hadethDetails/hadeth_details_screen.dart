@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islamic/core/utils/app_colors.dart';
 import 'package:islamic/core/utils/app_assets.dart';
 import 'package:islamic/models/hadeth_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

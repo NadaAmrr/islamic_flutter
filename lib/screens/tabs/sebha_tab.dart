@@ -72,7 +72,7 @@ class _SebhaTabState extends State<SebhaTab>
               )),
           Text(AppLocalizations.of(context)!.tasbeh, style: Theme.of(context).textTheme.titleMedium),
           Container(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Theme.of(context).primaryColor,
@@ -100,12 +100,12 @@ class _SebhaTabState extends State<SebhaTab>
                     style: Theme.of(context).textTheme.titleMedium)),
           ),
           Container(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Theme.of(context).primaryColor,
             ),
-            child: Text("${tsbeehName[index]}",
+            child: Text(tsbeehName[index],
                 style: Theme.of(context).textTheme.titleMedium),
           ),
         ],
