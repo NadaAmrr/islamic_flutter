@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:islamic/core/utils/app_colors.dart';
-import 'package:islamic/core/utils/app_image.dart';
+import 'package:islamic/core/utils/app_assets.dart';
+import 'package:islamic/provider/app_confing_provider.dart';
 import 'package:islamic/screens/tabs/hadeth_tab.dart';
 import 'package:islamic/screens/tabs/quran_tab.dart';
 import 'package:islamic/screens/tabs/radio_tab.dart';
 import 'package:islamic/screens/tabs/sebha_tab.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic/screens/tabs/settings_tab.dart';
+import 'package:provider/provider.dart';
+
 class HomeScreen extends StatefulWidget {
   static String routeName = "home";
 
@@ -21,12 +24,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     final ThemeData currentTheme = Theme.of(context);
 
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(AppImages.defaultBg),
+          image: provider.isLightMode()
+              ? AssetImage(AppAssets.imgDefaultBg)
+              : AssetImage(AppAssets.imgDarkBg),
           fit: BoxFit.cover,
         ),
       ),
@@ -43,45 +50,40 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
         /// Bottom Nav bar
-        bottomNavigationBar: Theme(
-          data: currentTheme.copyWith(
-            canvasColor: currentTheme.brightness == Brightness.dark
-                ? AppColors.mainDark
-                : AppColors.main,
-          ),
-          child: BottomNavigationBar(
-              currentIndex: selectedIndex,
-              onTap: (index) {
-                selectedIndex = index;
-                setState(() {});
-              },
-              items: [
-                BottomNavigationBarItem(
-                    icon: ImageIcon(AssetImage(AppImages.iconRadio)),
-                    label: AppLocalizations.of(context)!.radio),
-                BottomNavigationBarItem(
-                    icon: ImageIcon(AssetImage(AppImages.iconSebha)),
-                    label: AppLocalizations.of(context)!.tasbeh),
-                BottomNavigationBarItem(
-                    icon: ImageIcon(AssetImage(AppImages.iconHadeth)),
-                    label: AppLocalizations.of(context)!.ahadeth),
-                BottomNavigationBarItem(
-                    icon: ImageIcon(AssetImage(AppImages.iconQuran)),
-                    label: AppLocalizations.of(context)!.quran),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.settings),
-                    label: AppLocalizations.of(context)!.setting),
-              ]),
-        ),
+        bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            currentIndex: selectedIndex,
+            onTap: (index) {
+              selectedIndex = index;
+              setState(() {});
+            },
+            items: [
+              BottomNavigationBarItem(
+                  icon: const ImageIcon(AssetImage(AppAssets.iconRadio)),
+                  label: AppLocalizations.of(context)!.radio),
+              BottomNavigationBarItem(
+                  icon: const ImageIcon(AssetImage(AppAssets.iconSebha)),
+                  label: AppLocalizations.of(context)!.tasbeh),
+              BottomNavigationBarItem(
+                  icon: const ImageIcon(AssetImage(AppAssets.iconHadeth)),
+                  label: AppLocalizations.of(context)!.ahadeth),
+              BottomNavigationBarItem(
+                  icon: const ImageIcon(AssetImage(AppAssets.iconQuran)),
+                  label: AppLocalizations.of(context)!.quran),
+              BottomNavigationBarItem(
+                  icon: const Icon(Icons.settings),
+                  label: AppLocalizations.of(context)!.setting),
+            ]),
         body: tabs[selectedIndex],
       ),
     );
   }
+
   List<Widget> tabs = [
-    RadioTab(),
+    const RadioTab(),
     SebhaTab(),
-    HadethTab(),
+    const HadethTab(),
     QuranTab(),
-    SettingsTab()
+    const SettingsTab()
   ];
 }

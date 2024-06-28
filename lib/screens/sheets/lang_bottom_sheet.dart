@@ -1,12 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islamic/core/theme/app_theme.dart';
+import 'package:islamic/core/utils/app_colors.dart';
 import 'package:islamic/provider/app_confing_provider.dart';
 import 'package:provider/provider.dart';
 
 class LanguageBottomSheet extends StatelessWidget {
   const LanguageBottomSheet({super.key});
-  // bool isEnglish = true;
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
@@ -14,7 +14,12 @@ class LanguageBottomSheet extends StatelessWidget {
       padding: const EdgeInsets.all(18.0),
       child: Column(
         children: [
-          Text(AppLocalizations.of(context)!.lang, style: Theme.of(context).textTheme.titleMedium,),
+          Text(
+            AppLocalizations.of(context)!.lang,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          const SizedBox(height: 20,),
+          /// Language: EN
           InkWell(
             onTap: () {
               provider.changeLang("en");
@@ -28,37 +33,47 @@ class LanguageBottomSheet extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context)!.en,
                       style: TextStyle(
-                          // color: provider.appLang == "en"
-                          //     ? provider.theme == ThemeMode.light //en
-                          //     ? MyThemeData.textLight
-                          //     : MyThemeData.textDark
-                          //     : provider.theme == ThemeMode.light //ar
-                          //     ? MyThemeData.primaryColor
-                          //     : MyThemeData.yellowColor,
+                          color: provider.appLang == "en"
+
+                              /// EN
+                              ? provider.appTheme == ThemeMode.light
+                                  ? AppColors.textMain
+                                  : AppColors.textDarkMain
+
+                              /// AR
+                              : provider.appTheme == ThemeMode.light
+                                  ? AppColors.textMain
+                                  : AppColors.yellow,
                           fontSize: 30,
                           fontFamily: 'ElMessiri',
                           fontWeight: FontWeight.bold),
                     ),
+
+                    /// Lang == ar ? ❎️: ✔
                     provider.appLang == "en"
                         ? Icon(
-                      Icons.done,
-                      size: 30,
-                      // color: provider.langCode == "en"
-                          // ? provider.theme == ThemeMode.light //en
-                          // ? MyThemeData.textLight
-                          // : MyThemeData.textDark
-                          // : provider.theme == ThemeMode.light //ar
-                          // ? MyThemeData.primaryColor
-                          // : MyThemeData.yellowColor,
-                    )
-                        : SizedBox(),
+                            Icons.done,
+                            size: 30,
+                            color: provider.appLang == "en"
+                            /// EN
+                                ? provider.appTheme == ThemeMode.light
+                                    ? AppColors.textMain
+                                    : AppColors.textDarkMain
+                            /// AR
+                                : provider.appTheme == ThemeMode.light
+                                    ? AppColors.textMain
+                                    : AppColors.yellow,
+                          )
+                        : const SizedBox(),
                   ],
                 ),
               ),
             ),
           ),
+          /// Language: AR
           InkWell(
             onTap: () {
+              /// AR
               provider.changeLang("ar");
             },
             child: Card(
@@ -70,30 +85,40 @@ class LanguageBottomSheet extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context)!.ar,
                       style: TextStyle(
-                          // color: provider.langCode == "ar"
-                          //     ? provider.theme == ThemeMode.light //en
-                          //     ? MyThemeData.textLight
-                          //     : MyThemeData.textDark
-                          //     : provider.theme == ThemeMode.light //ar
-                          //     ? MyThemeData.primaryColor
-                          //     : MyThemeData.yellowColor,
+                          color: provider.appLang == "ar"
+
+                              /// EN
+                              ? provider.appTheme == ThemeMode.light
+                                  ? AppColors.textMain
+                                  : AppColors.textDarkMain
+
+                              /// AR
+                              : provider.appTheme == ThemeMode.light
+                                  ? AppColors.textMain
+                                  : AppColors.yellow,
                           fontSize: 30,
                           fontFamily: 'ElMessiri',
                           fontWeight: FontWeight.bold),
                     ),
+
+                    /// Lang == en ? ❎️: ✔
                     provider.appLang == "en"
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Icon(
-                      Icons.done,
-                      size: 30,
-                      // color: provider.langCode == "ar"
-                      //     ? provider.theme == ThemeMode.light //en
-                      //     ? MyThemeData.textLight
-                      //     : MyThemeData.textDark
-                      //     : provider.theme == ThemeMode.light //ar
-                      //     ? MyThemeData.primaryColor
-                      //     : MyThemeData.textLight,
-                    ),
+                            Icons.done,
+                            size: 30,
+                            color: provider.appLang == "ar"
+
+                                /// EN
+                                ? provider.appTheme == ThemeMode.light
+                                    ? AppColors.textMain
+                                    : AppColors.textDarkMain
+
+                                /// AR
+                                : provider.appTheme == ThemeMode.light
+                                    ? AppColors.textMain
+                                    : AppColors.yellow,
+                          ),
                   ],
                 ),
               ),

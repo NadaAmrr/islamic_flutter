@@ -20,14 +20,9 @@ class SuraWidget extends StatelessWidget {
       },
       child: Padding(
         padding: const EdgeInsets.all(0.0),
-        child: Column(
-          children: [
-            Text(
-              name,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const Divider(),
-          ],
+        child: Text(
+          name,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
       ),
     );

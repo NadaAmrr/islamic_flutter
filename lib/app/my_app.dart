@@ -15,14 +15,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
+      themeMode: provider.appTheme,
+      darkTheme: AppTheme.darkTheme,
       initialRoute: HomeScreen.routeName,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(provider.appLang),
       routes: {
-        HomeScreen.routeName: (context) => HomeScreen(),
+        HomeScreen.routeName: (context) => const HomeScreen(),
         SuraDetailsScreen.routeName: (context) => SuraDetailsScreen(),
-        HadthDetailsScreen.routeName: (context) => HadthDetailsScreen(),
+        HadthDetailsScreen.routeName: (context) => const HadthDetailsScreen(),
       },
     );
   }

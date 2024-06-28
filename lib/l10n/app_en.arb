@@ -1,8 +1,8 @@
 {
   "appName": "My Islam",
-  "suraName": "Name of the Surah",
+  "suraName": "Surah",
   "sura": "Surah",
-  "numAyat": "Number of verses",
+  "numAyat": "Verses",
   "numTasbehat": "Number of praises",
   "ahadeth": "Hadiths",
   "tasbeh": "Praise",
@@ -14,5 +14,6 @@
   "light": "Light",
   "dark": "Dark",
   "en": "English",
-  "ar": "Arabic"
+  "ar": "Arabic",
+  "quranRadio": "Quran Radio"
 }

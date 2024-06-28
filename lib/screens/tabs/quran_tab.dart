@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:islamic/core/utils/app_image.dart';
+import 'package:islamic/core/utils/app_assets.dart';
 import 'package:islamic/models/sura_model.dart';
+import 'package:islamic/provider/app_confing_provider.dart';
 import 'package:islamic/screens/suraDetails/sura_details_screen.dart';
 import 'package:islamic/screens/tabs/widgets/sura_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 class QuranTab extends StatelessWidget {
   ScrollController _scrollController = ScrollController();
   List<String> suraNames = [
@@ -26,16 +28,17 @@ class QuranTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return Column(
       children: [
-        Center(child: Image.asset(AppImages.quranLogo)),
+        Center(child: Image.asset(AppAssets.quranLogo)),
         const Divider(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(AppLocalizations.of(context)!.numAyat,style: Theme.of(context).textTheme.titleLarge,),
-            Text(AppLocalizations.of(context)!.suraName,style: Theme.of(context).textTheme.titleLarge,),
+            Text(AppLocalizations.of(context)!.suraName,style: Theme.of(context).textTheme.titleMedium,),
+            Text(AppLocalizations.of(context)!.numAyat,style: Theme.of(context).textTheme.titleMedium,),
           ],
         ),
         const Divider(),
@@ -63,14 +66,9 @@ class QuranTab extends StatelessWidget {
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(0.0),
-                            child: Column(
-                              children: [
-                                Text(
-                                  versesNumber[index].toString(),
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                ),
-                                const Divider()
-                              ],
+                            child: Text(
+                              versesNumber[index].toString(),
+                              style: Theme.of(context).textTheme.titleSmall,
                             ),
                           ),
                         );

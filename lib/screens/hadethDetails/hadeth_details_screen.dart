@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:islamic/core/utils/app_colors.dart';
-import 'package:islamic/core/utils/app_image.dart';
+import 'package:islamic/core/utils/app_assets.dart';
 import 'package:islamic/models/hadeth_model.dart';
-import 'package:islamic/models/sura_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islamic/provider/app_confing_provider.dart';
+import 'package:provider/provider.dart';
+
 class HadthDetailsScreen extends StatefulWidget {
   static const routeName = "hadeth";
   const HadthDetailsScreen({super.key});
@@ -18,12 +19,14 @@ class _HadthDetailsScreenState extends State<HadthDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     var args = ModalRoute.of(context)!.settings.arguments as HadethModel;
 
     return Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppImages.defaultBg),
+            image: provider.isLightMode() ? const AssetImage(AppAssets.imgDefaultBg) : const AssetImage(AppAssets.imgDarkBg),
             fit: BoxFit.cover,
           ),
         ),
@@ -36,7 +39,6 @@ class _HadthDetailsScreenState extends State<HadthDetailsScreen> {
               AppLocalizations.of(context)!.appName,
               style: Theme.of(context).textTheme.titleLarge,
             ),
-            iconTheme: IconThemeData(color: Colors.black),
           ),
 
           /// Body
@@ -54,13 +56,13 @@ class _HadthDetailsScreenState extends State<HadthDetailsScreen> {
                       horizontal: MediaQuery.of(context).size.width * 0.04),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: AppColors.white,
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
                   ),
                   child: Column(
                     children: [
                       Text(
                         args.header,
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                       const Divider(),
                       Expanded(
@@ -72,8 +74,7 @@ class _HadthDetailsScreenState extends State<HadthDetailsScreen> {
                               textDirection: TextDirection.rtl,
                               style: Theme.of(context)
                                   .textTheme
-                                  .titleLarge!
-                                  .copyWith(),
+                                  .bodySmall
                             );
                           },
                           itemCount: args.content.length,
